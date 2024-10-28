@@ -9,7 +9,7 @@ import sqlite3
 from sqlite3 import Error
 from lib.constants import *
 from dotenv import load_dotenv
-from lib.models import AircraftState
+from lib.models import Adsb
 from lib.rabbitmq import RabbitMQService
 
 load_dotenv()
@@ -90,7 +90,7 @@ def update_aircraft_states(data: dict, conn: sqlite3.Connection):
     try:
         with conn:
             for state in data.get('states', []):
-                aircraft_state = AircraftState(**{
+                aircraft_state = Adsb(**{
                     "icao24": state[0].strip(),
                     "callsign": state[1].strip(),
                     "origin_country": state[2].strip(),
@@ -129,7 +129,7 @@ def update_aircraft_states(data: dict, conn: sqlite3.Connection):
                     aircraft_state.spi,
                     aircraft_state.position_source
                 )
-                conn.execute(INSERT_AIRCRAFT_SQL, insert_values)
+                conn.execute(INSERT_ADSB_SQL, insert_values)
     except Error as e:
         logging.error(f"Error updating aircraft states: {e}")
         raise    

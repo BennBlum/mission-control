@@ -22,7 +22,7 @@ from lib.models import (
     BoundingBoxesRequest,
     RegionResponse,
     FlightDataResponse,
-    AircraftState,
+    Adsb,
 )
 from api.services.adsb_service import AdsbService
 
@@ -146,9 +146,9 @@ def flight_data(
     """
     try:
         adbs_data = adbs_service.fetch_all_aircraft_states()
-        flights: List[AircraftState] = [
-            AircraftState(
-                **{k: getattr(flight, k) for k in AircraftState.model_fields.keys()}
+        flights: List[Adsb] = [
+            Adsb(
+                **{k: getattr(flight, k) for k in Adsb.model_fields.keys()}
             )
             for flight in adbs_data
         ]

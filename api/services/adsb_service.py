@@ -1,7 +1,7 @@
 import sqlite3
 from typing import List
 from lib.constants import *
-from lib.models import AircraftStateTable
+from lib.models import AdsbTable
 
 class AdsbService:
     """
@@ -21,12 +21,12 @@ class AdsbService:
         conn.row_factory = sqlite3.Row
         return conn
 
-    def fetch_all_aircraft_states(self) -> List[AircraftStateTable]:
+    def fetch_all_aircraft_states(self) -> List[AdsbTable]:
         """
         Retrieves all ADS-B aircraft state records from the database that match the most recent update batch.
 
         Returns:
-            list[AircraftStateTable]: List of validated aircraft state records.
+            list[AdsbTable]: List of validated aircraft state records.
         """       
         flights = []
         try:
@@ -47,7 +47,7 @@ class AdsbService:
 
                 if records:
                     flights = [
-                        AircraftStateTable.model_validate(dict(zip(column_names, record)))
+                        AdsbTable.model_validate(dict(zip(column_names, record)))
                         for record in records
                     ]
 

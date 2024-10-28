@@ -18,7 +18,7 @@ class Region(BaseModel):
     lamax: float
     lomax: float
 
-class AircraftState(BaseModel):
+class Adsb(BaseModel):
     """
    Represents the state of an aircraft, including its position, 
     flight parameters, and transponder details.
@@ -66,9 +66,9 @@ class AircraftState(BaseModel):
     class Config:
         str_strip_whitespace = True
 
-class AircraftStateTable(AircraftState):
+class AdsbTable(Adsb):
     """
-    Extends the AircraftState model to include fields 
+    Extends the Adsb model to include fields 
     for database operations.
 
     Attributes:
@@ -129,10 +129,10 @@ class RegionResponse(BaseModel):
 
 class FlightDataResponse(BaseModel):
     """
-    Contains a list of AircraftState objects, 
+    Contains a list of Adsb objects, 
     representing the current state of all tracked flights.
 
     Attributes:
-        flights (List[AircraftState]): List of aircraft states.
+        flights (List[Adsb]): List of aircraft states.
     """
-    flights: List[AircraftState]
+    flights: List[Adsb]

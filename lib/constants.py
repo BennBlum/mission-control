@@ -43,7 +43,7 @@ COLUMN_POSITION_SOURCE = "position_source"
 COLUMN_UPDATE_BATCH = "update_batch"
 
 
-INSERT_AIRCRAFT_SQL = f"""
+INSERT_ADSB_SQL = f"""
     INSERT INTO {TABLE_ADSB} (
         icao24, callsign, origin_country, time_position,
         last_contact, longitude, latitude, baro_altitude,
