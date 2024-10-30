@@ -3,9 +3,16 @@
 
 **Mission Control** is a real-time aircraft tracking application that fetches Automatic Dependent Surveillance Broadcasting (ADS-B) data from the OpenSky API. This data is relayed to a Next.js dashboard that features an interactive map, enabling users to track commercial aircraft in near real-time.
 
-# Demo
 
-![Mission Control Demo](demo.gif)
+# Demo
+<img src="demo.gif" alt="Demo" style="width:60%;">
+<p>Demo of the Mission Control application</p>
+
+<a href="docs/mission-control-sequence.png" target="_blank">
+    <img src="docs/mission-control-sequence.png" alt="Sequence Diagram" style="width:60%;">
+</a>
+<p><a href="docs/mission-control-sequence.png" target="_blank">Sequence Diagram</a></p>
+
 
 ## Features
 
